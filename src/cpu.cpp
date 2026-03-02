@@ -6,6 +6,8 @@
 #include <iomanip>
 #include <iostream>
 #include <vector>
+#include <chrono>
+#include <fstream>
 
 CPU::CPU() {
   PC = 0x0000; // Start PC at 0x0000 as per the documentation
@@ -151,6 +153,33 @@ bool CPU::loop(std::vector<uint8_t> &memory, CPU &myCPU,
 
   int i = 0;
   Instructions instruction;
+
+  // #region agent log
+  {
+    try {
+      std::ofstream logFile(
+          "/home/robot/cpp-emulator/.cursor/debug-b57c79.log",
+          std::ios::app);
+      if (logFile.is_open()) {
+        auto now = std::chrono::system_clock::now();
+        auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(
+                      now.time_since_epoch())
+                      .count();
+        logFile << "{\"sessionId\":\"b57c79\",\"runId\":\"pre-fix\","
+                   "\"hypothesisId\":\"H2\",\"location\":\"cpu.cpp:144\","
+                   "\"message\":\"CPU loop start\","
+                   "\"data\":{\"slug\":"
+                << (slug ? "true" : "false")
+                << ",\"stopFlag\":" << static_cast<int>(memory[0x7200])
+                << ",\"pc\":" << myCPU.getPC() << "},\"timestamp\":" << ms
+                << "}"
+                << std::endl;
+      }
+    } catch (...) {
+    }
+  }
+  // #endregion
+
   while (!quit && memory[0x7200] == STOP_FLAG) {
     temp(memory, myCPU, loopLocation, renderer, texture, vram, pixels, quit,
          slug, myGPU, myMemory, i, instruction);
@@ -180,5 +209,32 @@ bool CPU::loop(std::vector<uint8_t> &memory, CPU &myCPU,
   } // end of while loop
 
   myCPU.PC = 0x0000;
+
+  // #region agent log
+  {
+    try {
+      std::ofstream logFile(
+          "/home/robot/cpp-emulator/.cursor/debug-b57c79.log",
+          std::ios::app);
+      if (logFile.is_open()) {
+        auto now = std::chrono::system_clock::now();
+        auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(
+                      now.time_since_epoch())
+                      .count();
+        logFile << "{\"sessionId\":\"b57c79\",\"runId\":\"pre-fix\","
+                   "\"hypothesisId\":\"H2\",\"location\":\"cpu.cpp:180\","
+                   "\"message\":\"CPU loop end\","
+                   "\"data\":{\"slug\":"
+                << (slug ? "true" : "false")
+                << ",\"stopFlag\":" << static_cast<int>(memory[0x7200])
+                << ",\"pc\":" << myCPU.getPC() << "},\"timestamp\":" << ms
+                << "}"
+                << std::endl;
+      }
+    } catch (...) {
+    }
+  }
+  // #endregion
+
   return true;
 }

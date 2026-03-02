@@ -2,6 +2,7 @@
 #include "../include/memory.hpp"
 #include <SDL2/SDL.h>
 #include <fstream>
+#include <chrono>
 
 bool CONSOLE::quit = false;
 
@@ -84,6 +85,31 @@ bool CONSOLE::initialize(Memory &myMemory) {
     std::cerr << "Error: setup failed" << std::endl;
     return false;
   }
+
+  // #region agent log
+  {
+    try {
+      std::ofstream logFile(
+          "/home/robot/cpp-emulator/.cursor/debug-b57c79.log",
+          std::ios::app);
+      if (logFile.is_open()) {
+        auto now = std::chrono::system_clock::now();
+        auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(
+                      now.time_since_epoch())
+                      .count();
+        logFile << "{\"sessionId\":\"b57c79\",\"runId\":\"pre-fix\","
+                   "\"hypothesisId\":\"H1\",\"location\":\"console.cpp:88\","
+                   "\"message\":\"Console initialize after CPU setup\","
+                   "\"data\":{\"romPath\":\""
+                << romPath
+                << "\",\"stopFlag\":" << static_cast<int>(memory[0x7200])
+                << "},\"timestamp\":" << ms << "}"
+                << std::endl;
+      }
+    } catch (...) {
+    }
+  }
+  // #endregion
 
   if (romPath.find("hello_world") == std::string::npos) {
     hws = false;

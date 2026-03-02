@@ -3,6 +3,8 @@
 #include "../include/memory.hpp"
 #include <iostream>
 #include <unordered_map>
+#include <chrono>
+#include <fstream>
 
 void LBU(unsigned int reg_a, unsigned int reg_b, unsigned int immediate,
          CPU &cpu, std::vector<uint8_t> &memory, Memory &myMemory) {
@@ -70,6 +72,34 @@ void SB(unsigned int reg_a, unsigned int reg_b, unsigned int immediate,
   if ((cpu.readRegister(reg_a) + immediate) >= 0x6100 &&
       ((cpu.readRegister(reg_a) + immediate)) <= 0x6fff) {
     myMemory.loadFlag = true;
+
+    static bool logged_vram_write = false;
+    if (!logged_vram_write) {
+      logged_vram_write = true;
+      // #region agent log
+      try {
+        std::ofstream logFile(
+            "/home/robot/cpp-emulator/.cursor/debug-b57c79.log",
+            std::ios::app);
+        if (logFile.is_open()) {
+          auto now = std::chrono::system_clock::now();
+          auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(
+                        now.time_since_epoch())
+                        .count();
+          uint32_t addr = cpu.readRegister(reg_a) + immediate;
+          logFile << "{\"sessionId\":\"b57c79\",\"runId\":\"pre-fix\","
+                     "\"hypothesisId\":\"H3\",\"location\":\"instruction.cpp:70\","
+                     "\"message\":\"First VRAM byte write via SB\","
+                     "\"data\":{\"address\":"
+                  << addr << ",\"value\":"
+                  << (cpu.readRegister(reg_b) & 0xFF)
+                  << "},\"timestamp\":" << ms << "}"
+                  << std::endl;
+        }
+      } catch (...) {
+      }
+      // #endregion
+    }
   }
 }
 
