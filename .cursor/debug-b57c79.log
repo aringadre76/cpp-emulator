@@ -1,0 +1,20 @@
+{"sessionId":"b57c79","runId":"pre-fix","hypothesisId":"H1","location":"console.cpp:88","message":"Console initialize after CPU setup","data":{"romPath":"../flappy_bird.slug","stopFlag":5},"timestamp":1772486286885}
+{"sessionId":"b57c79","runId":"pre-fix","hypothesisId":"H2","location":"cpu.cpp:144","message":"CPU loop start","data":{"slug":false,"stopFlag":5,"pc":42288},"timestamp":1772486287354}
+{"sessionId":"b57c79","runId":"pre-fix","hypothesisId":"H3","location":"instruction.cpp:70","message":"First VRAM byte write via SB","data":{"address":24832,"value":0},"timestamp":1772486287355}
+{"sessionId":"b57c79","runId":"pre-fix","hypothesisId":"H2","location":"cpu.cpp:180","message":"CPU loop end","data":{"slug":false,"stopFlag":5,"pc":0},"timestamp":1772486295793}
+{"sessionId":"b57c79","runId":"pre-fix","hypothesisId":"H1","location":"console.cpp:88","message":"Console initialize after CPU setup","data":{"romPath":"../snake.slug","stopFlag":5},"timestamp":1772486300860}
+{"sessionId":"b57c79","runId":"pre-fix","hypothesisId":"H2","location":"cpu.cpp:144","message":"CPU loop start","data":{"slug":false,"stopFlag":5,"pc":37508},"timestamp":1772486301027}
+{"sessionId":"b57c79","runId":"pre-fix","hypothesisId":"H3","location":"instruction.cpp:70","message":"First VRAM byte write via SB","data":{"address":24832,"value":0},"timestamp":1772486301028}
+{"sessionId":"b57c79","runId":"pre-fix","hypothesisId":"H2","location":"cpu.cpp:180","message":"CPU loop end","data":{"slug":false,"stopFlag":5,"pc":0},"timestamp":1772486308320}
+{"sessionId":"b57c79","runId":"pre-fix","hypothesisId":"H1","location":"console.cpp:88","message":"Console initialize after CPU setup","data":{"romPath":"../flappy_bird.slug","stopFlag":5},"timestamp":1772488984311}
+{"sessionId":"b57c79","runId":"pre-fix","hypothesisId":"H2","location":"cpu.cpp:144","message":"CPU loop start","data":{"slug":false,"stopFlag":5,"pc":42288},"timestamp":1772488984742}
+{"sessionId":"b57c79","runId":"pre-fix","hypothesisId":"H3","location":"instruction.cpp:70","message":"First VRAM byte write via SB","data":{"address":24832,"value":0},"timestamp":1772488984743}
+{"sessionId":"b57c79","runId":"pre-fix","hypothesisId":"H2","location":"cpu.cpp:180","message":"CPU loop end","data":{"slug":false,"stopFlag":5,"pc":0},"timestamp":1772489098127}
+{"sessionId":"b57c79","runId":"pre-fix","hypothesisId":"H1","location":"console.cpp:88","message":"Console initialize after CPU setup","data":{"romPath":"../flappy_bird.slug","stopFlag":5},"timestamp":1772489107386}
+{"sessionId":"b57c79","runId":"pre-fix","hypothesisId":"H2","location":"cpu.cpp:144","message":"CPU loop start","data":{"slug":false,"stopFlag":5,"pc":42288},"timestamp":1772489107557}
+{"sessionId":"b57c79","runId":"pre-fix","hypothesisId":"H3","location":"instruction.cpp:70","message":"First VRAM byte write via SB","data":{"address":24832,"value":0},"timestamp":1772489107558}
+{"sessionId":"b57c79","runId":"pre-fix","hypothesisId":"H2","location":"cpu.cpp:180","message":"CPU loop end","data":{"slug":false,"stopFlag":5,"pc":0},"timestamp":1772489110541}
+{"sessionId":"b57c79","runId":"pre-fix","hypothesisId":"H1","location":"console.cpp:88","message":"Console initialize after CPU setup","data":{"romPath":"../snake.slug","stopFlag":5},"timestamp":1772489112080}
+{"sessionId":"b57c79","runId":"pre-fix","hypothesisId":"H2","location":"cpu.cpp:144","message":"CPU loop start","data":{"slug":false,"stopFlag":5,"pc":37508},"timestamp":1772489112243}
+{"sessionId":"b57c79","runId":"pre-fix","hypothesisId":"H3","location":"instruction.cpp:70","message":"First VRAM byte write via SB","data":{"address":24832,"value":0},"timestamp":1772489112244}
+{"sessionId":"b57c79","runId":"pre-fix","hypothesisId":"H2","location":"cpu.cpp:180","message":"CPU loop end","data":{"slug":false,"stopFlag":5,"pc":0},"timestamp":1772489146500}
